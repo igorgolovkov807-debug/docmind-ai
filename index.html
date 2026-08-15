@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+<head><link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DocMind AI</title>
@@ -10,7 +10,24 @@
     <h1>DocMind AI</h1>
     <p>Пойми любой документ за минуту</p>
 
-    <button>Загрузить документ</button>
+    <input type="file" id="documentUpload" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"><p id="fileName"></p><button id="analyzeButton" style="display: none;">
+    Анализировать документ
+</button><div id="analysisResult" style="display: none;">
+    <h2>Результат анализа</h2>
+    <div>
+    <h3>Краткое содержание</h3>
+    <p>Здесь будет краткое содержание документа.</p>
+
+    <h3>Важные пункты</h3>
+    <p>Здесь будут отмечены основные условия и обязательства.</p>
+
+    <h3>Сроки и даты</h3>
+    <p>Здесь будут указаны важные даты и сроки.</p>
+
+    <h3>Потенциальные риски</h3>
+    <p>Здесь будут отмечены пункты, требующие внимания.</p>
+</div>
+</div>
 
     <h2>Что умеет DocMind AI?</h2>
 
@@ -23,5 +40,20 @@
         <li>Добавлять собственную подпись</li>
     </ul>
 
-</body>
+</body><script>
+    const upload = document.getElementById("documentUpload");
+
+    upload.addEventListener("change", function() {
+        if (upload.files.length > 0) {
+            document.getElementById("fileName").textContent =
+    "Выбран файл: " + upload.files[0].name;
+        }document.getElementById("analyzeButton").style.display = "inline-block";
+    });
+    const analyzeButton = document.getElementById("analyzeButton");
+const analysisResult = document.getElementById("analysisResult");
+
+analyzeButton.addEventListener("click", function() {
+    analysisResult.style.display = "block";
+});
+</script>
 </html>
